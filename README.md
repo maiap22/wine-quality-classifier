@@ -9,7 +9,11 @@ Classificador binário de qualidade de vinhos construído **do zero**, sem frame
 Prever se um vinho é de **boa ou má qualidade** com base em suas propriedades físico-químicas, utilizando uma rede neural implementada manualmente — incluindo forward pass, backpropagation e atualização de pesos.
 
 ---
+##⚙️ Pré-Processamento 
 
+- **Normalização:** Z-score em todas as features (média 0, desvio padrão 1) para acelerar a convergência do gradiente
+
+---
 ## 📊 Dataset
 
 - **Fonte:** [Wine Quality Dataset — Kaggle](https://www.kaggle.com/datasets/joebeachcapital/wine-quality)
@@ -24,13 +28,15 @@ Prever se um vinho é de **boa ou má qualidade** com base em suas propriedades 
 
 ```
 Camada de Entrada   →   11 neurônios (features)
-Camada Oculta 1     →   64 neurônios  (ReLU)
-Camada Oculta 2     →   32 neurônios  (ReLU)
+Camada Oculta 1     →  128 neurônios  (ReLU)
+Camada Oculta 2     →   64 neurônios  (ReLU)
+Camada Oculta 3     →   32 neurônios  (ReLU)
 Camada de Saída     →    1 neurônio   (Sigmoid)
 ```
 
 - **Loss:** Binary Cross-Entropy
 - **Otimização:** Gradient Descent com backpropagation manual
+- **Regularização:** L2 + Dropout (taxa `0.3`)
 - **Implementação:** 100% NumPy — sem Scikit-Learn, TensorFlow ou PyTorch
 
 ---
@@ -39,6 +45,7 @@ Camada de Saída     →    1 neurônio   (Sigmoid)
 
 ![Métricas](results.png)
 
+- O dropout foi determinante para controlar o overfitting: o modelo inicial apresentava ~99% de acurácia no treino e ~82% no teste. Após implementação do dropout (30%) e regularização L2, o gap foi reduzido para ~3%.
 ---
 
 ## 🛠️ Tecnologias
@@ -62,11 +69,11 @@ Camada de Saída     →    1 neurônio   (Sigmoid)
 ## 📁 Estrutura do Repositório
 
 ```
-wine-quality-classifier/     ← nome do repositório
-├── Projeto_Rede_Neural_FINAL.ipynb           ← seu notebook do Colab
-├── winequality-red.csv          ← o arquivo do dataset
-├── results.png              ← a imagem dos gráficos
-└── README.md                ← o arquivo que estamos montando
+wine-quality-classifier/     
+├── Projeto_Rede_Neural_FINAL.ipynb  ← notebook
+├── README.md                
+├── results.png                      ← a imagem dos gráficos
+└── winequality-red.csv              ← Dataset utilizado
 ```
 
 ---
