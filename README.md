@@ -62,10 +62,11 @@ Camada de Saída     →    1 neurônio   (Sigmoid)
 ## 📁 Estrutura do Repositório
 
 ```
-wine-quality-classifier/
-├── notebook.ipynb     # Notebook principal com toda a implementação
-├── winequality.csv    # Dataset utilizado
-└── README.md
+wine-quality-classifier/     ← nome do repositório
+├── Projeto_Rede_Neural_FINAL.ipynb           ← seu notebook do Colab
+├── winequality-red.csv          ← o arquivo do dataset
+├── results.png              ← a imagem dos gráficos
+└── README.md                ← o arquivo que estamos montando
 ```
 
 ---
